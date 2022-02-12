@@ -10,7 +10,7 @@ class ListNode:
 
 
 class IterativeSolution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverseList(self, head):
         # OPTIMAL SOLUTION
         # time: O(n) memory: O(1)
 
@@ -30,7 +30,7 @@ class IterativeSolution:
 
 
 class RecursiveSolution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverseList(self, head):
 
         # time: O(n) memory: O(n)
 
