@@ -20,3 +20,5 @@ def binarySearch(nums, target):
 
 
 print(binarySearch(nums, 15))
+
+print('test')
