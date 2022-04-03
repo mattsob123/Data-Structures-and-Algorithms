@@ -1,0 +1,35 @@
+def updateMatrix(self, mat):
+    ROWS = len(mat)
+    COLS = len(mat[0])
+    
+    q = []
+    
+    neighbours = [[1,0], [-1,0], [0,1], [0,-1]]
+    
+    ## initial pass to acquire the 0's
+    for row in range(ROWS):
+        for col in range(COLS):
+            if mat[row][col] == 0:
+                q.append([row, col])
+                
+            else:
+                mat[row][col] = -1
+    
+    # pass through the graph
+    length = 0
+    while q != []:
+        qLen = len(q)
+        length += 1
+        for i in range(qLen, 0, -1):
+            cell = q.pop(0)
+            
+            for n in neighbours:
+                r = cell[0] + n[0]
+                c = cell[1] + n[1]
+                
+                if r >= 0 and c >= 0 and r < ROWS and c < COLS and mat[r][c] == -1:
+                    mat[r][c] = length
+                    q.append([r,c])
+                    
+    return mat
+                

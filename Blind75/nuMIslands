@@ -1,0 +1,40 @@
+def numIslands(grid):
+    ROWS, COLS = len(grid), len(grid[0])
+    visitedCells = set()
+    islands = 0
+
+    def bfs(r,c):
+        queue = []
+
+        visitedCells.add((r,c))
+        queue.append([r,c])
+
+        while queue != []:
+            qLen = len(queue)
+            for i in range(qLen):
+                cell = queue.pop(0)
+                r, c = cell[0], cell[1]
+                directions = [[1,0], [-1,0], [0,1], [0,-1]]
+
+                for dr, dc in directions:
+                    r, c, = r + dr, c + dc
+
+                    if (r in range(ROWS) and c in range(COLS) and grid[r][c] == "1" and (r,c) not in visitedCells):
+                        queue.append([r,c])
+                        visitedCells.add((r,c))
+
+    for row in range(ROWS):
+        for col in range(COLS):
+            if grid[row][col] == "1" and (row,col) not in visitedCells:
+                bfs(row, col)
+                islands += 1
+
+    return islands
+
+                
+            
+
+grid = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
+
+numIslands(grid)
+    
